@@ -1,0 +1,28 @@
+public class Factorial {
+    
+    // Метод для вычисления факториала
+    public static long factorial(int n) {
+        if (n < 0) {
+            throw new IllegalArgumentException("Число не может быть отрицательным");
+        }
+        
+        long result = 1;
+        for (int i = 2; i <= n; i++) {
+            result *= i;
+        }
+        return result;
+    }
+    
+    // Главный метод
+    public static void main(String[] args) {
+        int number = 5;
+        long fact = factorial(number);
+        System.out.println("Факториал " + number + " = " + fact);
+        
+        // Вывод факториалов от 0 до 10
+        System.out.println("\nТаблица факториалов:");
+        for (int i = 0; i <= 10; i++) {
+            System.out.println(i + "! = " + factorial(i));
+        }
+    }
+}
