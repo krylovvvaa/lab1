@@ -1,0 +1,96 @@
+{
+    "Given-When-Then Test Method": {
+        "prefix": [
+            "gwt",
+            "testgwt"
+        ],
+        "body": [
+            "@Test",
+            "public void test${1:MethodName}() {",
+            "    // Given - подготовка данных",
+            "    Calculator calculator = new Calculator();",
+            "    ${2:int a = ${3:0};}",
+            "    ${4:int b = ${5:0};}",
+            "    ${6:int expected = ${7:0};}",
+            "    ",
+            "    // When - выполнение действия",
+            "    int result = calculator.${8:sum}(a, b);",
+            "    ",
+            "    // Then - проверка результата",
+            "    Assert.assertEquals(expected, result);",
+            "}"
+        ],
+        "description": "Создаёт тест в стиле Given-When-Then (как в вашем проекте)"
+    },
+    "Test with Exception": {
+        "prefix": [
+            "testex",
+            "testexception"
+        ],
+        "body": [
+            "@Test(expected = ${1:ArithmeticException}.class)",
+            "public void test${2:MethodName}WillThrowExceptionWhen${3:Condition}() {",
+            "    // Given",
+            "    Calculator calculator = new Calculator();",
+            "    ${4:int a = ${5:6};}",
+            "    ${6:int b = ${7:0};}",
+            "    ",
+            "    // When & Then - ожидаем исключение",
+            "    calculator.${8:divide}(a, b);",
+            "}"
+        ],
+        "description": "Создаёт тест для проверки выброса исключения"
+    },
+    "Full Calculator Test Class": {
+        "prefix": [
+            "calctestfull",
+            "ctf"
+        ],
+        "body": [
+            "package ${1:com.github.stokito.unitTestExample.calculator};",
+            "",
+            "import junit.framework.Assert;",
+            "import org.junit.Test;",
+            "",
+            "public class ${2:CalculatorTest} {",
+            "    ",
+            "    @Test",
+            "    public void test${3:Sum}() {",
+            "        // Given",
+            "        Calculator calculator = new Calculator();",
+            "        ${4:int a = 2; int b = 2;}",
+            "        ${5:int expected = 4;}",
+            "        ",
+            "        // When",
+            "        int result = calculator.${6:sum}(a, b);",
+            "        ",
+            "        // Then",
+            "        Assert.assertEquals(expected, result);",
+            "    }",
+            "    ",
+            "    @Test(expected = ${7:ArithmeticException}.class)",
+            "    public void test${8:Divide}WillThrowExceptionWhenDivideOnZero() {",
+            "        // Given",
+            "        Calculator calculator = new Calculator();",
+            "        ",
+            "        // When",
+            "        calculator.${9:divide}(6, 0);",
+            "    }",
+            "}"
+        ],
+        "description": "Создаёт полный тестовый класс для калькулятора"
+    },
+    "Multiple Assertions": {
+        "prefix": [
+            "assertmulti",
+            "asmulti"
+        ],
+        "body": [
+            "// Проверка нескольких условий",
+            "if (${1:result} != ${2:expected}) {",
+            "    Assert.fail(\"Expected: \" + ${2:expected} + \", but got: \" + ${1:result});",
+            "}"
+        ],
+        "description": "Проверка с кастомным сообщением об ошибке"
+    }
+}
